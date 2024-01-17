@@ -1,0 +1,14 @@
+@media (min-width: 768px) {
+    #content.active {
+        margin-left: 0;
+    }
+
+    #sidebar.active {
+        margin-left: -250px; /* Ajusta esto al ancho de tu sidebar */
+    }
+
+    #sidebar,
+    #content {
+        transition: margin-left .3s ease-in-out;
+    }
+}
