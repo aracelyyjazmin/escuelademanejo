@@ -47,7 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <div class="card">
                         <div class="card-header py-4 text-center bg-primary">
                             <a href="auth-login.php">
-                                <span><img src="assets/images/logo1.png" alt="logo" height="80"></span>
+                                <span><img src="assets/images/logo3.png" alt="logo" height="80"></span>
                             </a>
                         </div>
                         <div class="card-body p-4">

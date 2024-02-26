@@ -39,62 +39,90 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $mail->Port = 587;
 
             // Destinatarios
-            $mail->setFrom('mariana2010mrv@gmail.com', 'Escuela de Manejo');
+            $mail->setFrom('mariana2010mrv@gmail.com', 'Escuela de Manejo - Alo licencia de conducir');
             $mail->addAddress($email); // Añade un destinatario
 
             // Contenido
             $mail->isHTML(true);
             $mail->Subject = 'Restablecimiento de contraseña';
             $mail->Body = '
-            <html>
-            <head>
-                <style>
-                    .email-container {
-                        font-family: Arial, sans-serif;
-                        color: #333333;
-                        max-width: 600px;
-                        margin: auto;
-                    }
-                    .email-header {
-                        background-color: #4CAF50;
-                        color: white;
-                        padding: 10px;
-                        text-align: center;
-                    }
-                    .email-body {
-                        padding: 20px;
-                    }
-                    .email-footer {
-                        text-align: center;
-                        margin-top: 20px;
-                        font-size: 0.9em;
-                    }
-                    .btn-reset {
-                        background-color: #008CBA;
-                        color: white;
-                        padding: 10px 20px;
-                        text-decoration: none;
-                        border-radius: 5px;
-                    }
-                </style>
-            </head>
-            <body>
-                <div class="email-container">
-                    <div class="email-header">
-                        <h2>Restablecimiento de Contraseña</h2>
-                    </div>
-                    <div class="email-body">
-                        <p>Hola,</p>
-                        <p>Has solicitado restablecer tu contraseña. Por favor, haz clic en el siguiente enlace para establecer una nueva contraseña:</p>
-                        <a href="' . $linkDeRestablecimiento . '" class="btn-reset">Restablecer Contraseña</a>
-                        <p>Si no solicitaste un restablecimiento de contraseña, ignora este correo.</p>
-                    </div>
-                    <div class="email-footer">
-                        <p>Saludos,<br>Escuela de Manejo</p>
-                    </div>
+            <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Restablecimiento de Contraseña</title>
+    <style>
+        .email-container {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            color: #333;
+            max-width: 600px;
+            margin: 20px auto;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .email-header {
+            background-color: #d32f2f; /* Rojo */
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 4px solid #b71c1c; /* Rojo oscuro */
+        }
+        .email-body {
+            padding: 20px;
+            line-height: 1.5;
+            background-color: #fff; /* Blanco */
+            text-align: center; /* Centrar texto y botones */
+        }
+        .email-footer {
+            background-color: #f2f2f2; /* Gris claro */
+            color: #333;
+            text-align: center;
+            padding: 10px;
+            font-size: 0.9em;
+            border-top: 1px solid #ddd;
+        }
+        .btn-reset {
+            background-color: #b71c1c; /* Rojo oscuro */
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 20px;
+        }
+        .btn-reset:hover {
+            background-color: #d32f2f; /* Rojo */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        /* Centrar el botón */
+        .btn-container {
+            text-align: center; /* Centra el contenedor del botón */
+        }
+    </style>
+        </head>
+        <body>
+            <div class="email-container">
+                <div class="email-header">
+                    <h1>Restablecimiento de Contraseña</h1>
                 </div>
-            </body>
-            </html>';
+                <div class="email-body"> 
+                    <p>Hola,</p>
+                    <p>Has solicitado restablecer tu contraseña. Por favor, haz clic en el siguiente enlace para establecer una nueva contraseña:</p>
+                    <div class="btn-container">
+                        <a href="' . $linkDeRestablecimiento . '" class="btn-reset">Restablecer Contraseña</a>
+                    </div>
+                    <p>Si no solicitaste un restablecimiento de contraseña, ignora este correo.</p>
+                </div>
+                <div class="email-footer">
+                    <p>Saludos cordiales,<br><strong>Escuela de Manejo</strong></p>
+                </div>
+            </div>
+        </body>
+        </html>
+        ';
         
             $mail->send();
             $_SESSION['email_sent_to'] = $email;
